@@ -14,7 +14,7 @@ class User extends React.Component {
 
         };
     }
-   componentDidMount = () =>{
+   componentDidMount(){
        fetch('https://user-details-server.herokuapp.com/users')
        .then((res )=> res.json())
        .then((data) =>{
@@ -48,6 +48,7 @@ class User extends React.Component {
     additem =(name,email,city) =>{
         fetch("https://user-details-server.herokuapp.com/user", { 
             method: "POST", 
+            mode: 'cors', 
             body: JSON.stringify({ 
                 name: name, 
                 email: email, 
@@ -69,6 +70,7 @@ class User extends React.Component {
     edititem = (id,name,email,city)=>{
         fetch( `https://user-details-server.herokuapp.com/user/${id}`, { 
             method: "PUT", 
+            mode: 'cors', 
             body: JSON.stringify({ 
                 name: name, 
                 email: email, 
@@ -89,7 +91,7 @@ class User extends React.Component {
     delete =(id)=>{
         fetch( `https://user-details-server.herokuapp.com/${id}`, { 
             method: "DELETE",                   
-          
+            mode: 'cors', 
             headers: { 
                 "Content-type": "application/json; charset=UTF-8"
             } 
